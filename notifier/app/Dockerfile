@@ -6,6 +6,7 @@ COPY notifier/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY notifier/app/ .
+COPY shared/ ./shared/
 
 ENV PYTHONUNBUFFERED=1
 

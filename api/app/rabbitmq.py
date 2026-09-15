@@ -10,7 +10,11 @@ async def publish_order(order_id: int):
         channel = await connection.channel()
 
         queue = await channel.declare_queue(
-            "orders_queue"
+            "orders_queue",
+            arguments={
+                "x-dead-letter-exchange": "",
+                "x-dead-letter-routing-key": "orders_queue_dlq",
+            },
         )
 
         await channel.default_exchange.publish(
