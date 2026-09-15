@@ -1,9 +1,12 @@
+from typing import Annotated
+
 from fastapi import APIRouter, Depends
 from rabbitmq import publish_order
 from schemas.orders import OrderCreate, OrderOut
 from shared.database import get_session
 from shared.logger import get_logger
 from shared.models import Order
+from sqlalchemy.ext.asyncio import AsyncSession
 
 logger = get_logger(__name__)
 
@@ -11,7 +14,7 @@ router = APIRouter(
     prefix="/orders",
 )
 
-session_dep = Depends(get_session)
+session_dep = Annotated[AsyncSession, Depends(get_session)]
 
 @router.post("/", response_model=OrderOut)
 async def create_order(
