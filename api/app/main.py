@@ -1,6 +1,5 @@
 from fastapi import FastAPI
 from routers.routers import main_router
-
 from shared.logger import get_logger
 
 logger = get_logger(__name__)

@@ -1,7 +1,6 @@
 from fastapi import APIRouter, Depends
 from rabbitmq import publish_order
 from schemas.orders import OrderCreate, OrderOut
-
 from shared.database import get_session
 from shared.logger import get_logger
 from shared.models import Order

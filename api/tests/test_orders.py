@@ -4,7 +4,6 @@ from unittest.mock import AsyncMock, patch
 import pytest
 from httpx import ASGITransport, AsyncClient
 from main import app
-
 from shared.database import get_session
 
 
